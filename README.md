@@ -103,7 +103,7 @@ backend/
 ├── package.json         # Configurações do projeto e dependências
 └── node_modules/        # Dependências instaladas
 ```
-#Frontend
+# Frontend
 ```
 frontend/
 ├── public/              # Arquivos públicos, como index.html
@@ -137,7 +137,7 @@ DELETE	/:id	Deleta uma tarefa
 }
 ```
 ---
-#Uso
+# Uso
 1. Adicionar uma tarefa
 - Insira o nome da tarefa no campo de texto.
 - Clique no botão "Adicionar".
