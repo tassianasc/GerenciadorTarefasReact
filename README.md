@@ -179,7 +179,7 @@ export default App;
 const [tasks, setTasks] = useState([]);
 const [newTask, setNewTask] = useState('');
 ```
-2. # Efeitos colaterais com useEffect:
+**Efeitos colaterais com useEffect:**
 
 - O useEffect é usado para carregar as tarefas do backend quando o componente é montado.
   
@@ -200,7 +200,7 @@ useEffect(() => {
 
 - O projeto exemplifica como os hooks substituem as antigas classes no React, tornando o código mais simples e funcional.
 ---
-3. # Node.js com Express
+# 3. Node.js com Express
 - O backend foi desenvolvido usando Node.js e o framework Express para criar uma API RESTful.
 - Inclui rotas para CRUD (Create, Read, Update, Delete) que interagem com o MongoDB.
 **Exemplos no projeto:**
@@ -236,7 +236,7 @@ app.listen(5000, () => console.log('Servidor rodando na porta 5000'));
 
 ```
 ---
-4. #  MongoDB
+# 4. MongoDB
 - O banco de dados MongoDB foi utilizado para armazenar as tarefas. O projeto inclui o uso do Mongoose para modelagem e interação com o banco.
 **Exemplos no projeto:**
 
