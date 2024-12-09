@@ -72,3 +72,79 @@ Inicie o servidor:
 npm run dev
 ```
 O backend estará rodando em http://localhost:5000.
+
+### Passo 3: Configuração do Frontend
+Navegue até o diretório frontend:
+```
+cd ../frontend
+```
+Instale as dependências:
+```
+npm install
+```
+Inicie o servidor do React:
+```
+npm start
+```
+
+O frontend estará disponível em http://localhost:3000.
+
+---
+## Estrutura do Projeto
+# Backend
+```
+backend/
+├── models/              # Modelos para interação com o MongoDB
+│   └── task.js          # Modelo para tarefas
+├── routes/              # Rotas da aplicação
+│   └── taskRoutes.js    # Rotas CRUD para tarefas
+├── .env                 # Variáveis de ambiente (excluído do repositório)
+├── server.js            # Arquivo principal do servidor
+├── package.json         # Configurações do projeto e dependências
+└── node_modules/        # Dependências instaladas
+```
+#Frontend
+```
+frontend/
+├── public/              # Arquivos públicos, como index.html
+├── src/                 # Código fonte da aplicação React
+│   ├── components/      # Componentes reutilizáveis
+│   │   └── TaskList.js  # Componente principal de tarefas
+│   ├── services/        # Serviços auxiliares
+│   │   └── api.js       # Configuração do Axios para consumir a API
+│   ├── App.js           # Componente raiz
+│   ├── index.js         # Ponto de entrada do React
+│   ├── App.css          # Estilos principais do App
+│   └── index.css        # Estilos globais
+├── package.json         # Configurações do projeto e dependências
+└── node_modules/        # Dependências instaladas
+```
+---
+## API Endpoints
+# Base URL
+http://localhost:5000/tasks
+# Rotas
+Método	Endpoint	Descrição
+GET	/	Retorna todas as tarefas
+POST	/	Cria uma nova tarefa
+PUT	/:id	Atualiza o status de uma tarefa
+DELETE	/:id	Deleta uma tarefa
+# Exemplo de Corpo para POST/PUT:
+```
+{
+  "title": "Aprender React",
+  "completed": false
+}
+```
+---
+#Uso
+1. Adicionar uma tarefa
+- Insira o nome da tarefa no campo de texto.
+- Clique no botão "Adicionar".
+2. Marcar como concluída
+- Clique no nome da tarefa para alternar entre concluída/não concluída.
+3. Excluir uma tarefa
+- Clique no botão "Deletar" ao lado da tarefa.
+---
+
+
