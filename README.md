@@ -258,9 +258,9 @@ module.exports = mongoose.model('Task', TaskSchema);
 - As operações com o banco (inserção, leitura, atualização e exclusão) são implementadas usando métodos do Mongoose.
 ---
 # Resumo
-
+---
 ![Screenshot_171](https://github.com/user-attachments/assets/bcf7a6f8-8696-4ccc-9568-cae5b8346af4)
-
+---
 Este projeto é um exemplo completo de integração entre frontend (React) e backend (Node.js com Express e MongoDB).
 ---
 # Como o MVC foi usado no Projeto
