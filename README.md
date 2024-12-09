@@ -60,7 +60,7 @@ npm install
 ```
 Configure o arquivo .env com as credenciais do banco de dados:
 
-.* Crie o arquivo .env na pasta backend com o seguinte conteúdo:
+- Crie o arquivo .env na pasta backend com o seguinte conteúdo:
 ```
 env
 MONGO_URI=mongodb:/.../projeto-final
