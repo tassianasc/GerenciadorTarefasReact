@@ -262,6 +262,95 @@ module.exports = mongoose.model('Task', TaskSchema);
 ![Screenshot_171](https://github.com/user-attachments/assets/bcf7a6f8-8696-4ccc-9568-cae5b8346af4)
 
 Este projeto é um exemplo completo de integração entre frontend (React) e backend (Node.js com Express e MongoDB).
+---
+# Como o MVC foi usado no Projeto
+O projeto implementa o padrão MVC com a separação clara entre as camadas:
+
+## 1. Model
+No projeto, o arquivo task.js em backend/models/ representa o Model.
+Ele define como as tarefas são estruturadas no banco de dados e como serão manipuladas.
+**Exemplo:**
+
+```
+const mongoose = require('mongoose');
+
+const TaskSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  completed: { type: Boolean, default: false },
+});
+
+module.exports = mongoose.model('Task', TaskSchema);
+
+```
+- Este modelo é usado pelo **Controller** para criar, buscar, atualizar e excluir dados no MongoDB.
+---
+## 2. Controller
+As rotas definidas em backend/routes/taskRoutes.js atuam como os **Controllers** do projeto.
+Elas gerenciam as requisições HTTP (GET, POST, PUT, DELETE), utilizam o **Model** para manipular os dados e retornam as respostas para o frontend.
+**Exemplo:**
+```
+router.post('/', async (req, res) => {
+  try {
+    const { title } = req.body;
+    const newTask = await Task.create({ title });
+    res.status(201).json(newTask);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+```
+- Aqui, o Controller:
+1. Recebe uma requisição POST para criar uma nova tarefa.
+2. Usa o Model Task para inserir os dados no MongoDB.
+3. Retorna a resposta ao cliente (frontend).
+---
+## 3. View
+- A interface do usuário, construída com React.js, representa a View no projeto.
+- O componente TaskList.js exibe as tarefas para o usuário e envia interações (como adicionar ou concluir tarefas) para o backend por meio de chamadas à API.
+**Exemplo:**
+```
+return (
+  <div>
+    <h1>Gerenciador de Tarefas</h1>
+    <input
+      type="text"
+      value={newTask}
+      onChange={(e) => setNewTask(e.target.value)}
+      placeholder="Nova tarefa"
+    />
+    <button onClick={addTask}>Adicionar</button>
+    <ul>
+      {tasks.map((task) => (
+        <li key={task._id}>
+          <span
+            style={{
+              textDecoration: task.completed ? 'line-through' : 'none',
+            }}
+            onClick={() => toggleTask(task._id, task.completed)}
+          >
+            {task.title}
+          </span>
+          <button onClick={() => deleteTask(task._id)} style={{ marginLeft: '10px' }}>
+            Deletar
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+```
+- A View:
+1. Exibe as tarefas.
+2. Permite ao usuário adicionar, marcar ou excluir tarefas.
+3. Chama as rotas do backend (Controller) via Axios.
+---
+**Resumo do Padrão MVC no Projeto**
+![Screenshot_172](https://github.com/user-attachments/assets/b9ad86cd-f3cc-4024-bc94-04f359da2483)
+
+Essa implementação separa claramente as responsabilidades, permitindo que o código seja mais organizado, fácil de entender e de manter.
+
 
 
 
