@@ -144,5 +144,123 @@ http://localhost:5000/tasks
 3. Excluir uma tarefa
 - Clique no botão "Deletar" ao lado da tarefa.
 ---
+# 1. React.js (criação)
+- O frontend foi construído utilizando **React.js** desde o início, usando o **Create React App** para criar a estrutura básica do projeto.
+- Componentes React foram usados, como o TaskList, para criar e gerenciar a interface.
+- O projeto utiliza **JSX** para definir a interface de maneira declarativa.
+**Exemplos no projeto:**
+
+- O arquivo App.js importa e utiliza o componente TaskList:
+```
+import React from 'react';
+import TaskList from './components/TaskList';
+
+function App() {
+  return (
+    <div>
+      <TaskList />
+    </div>
+  );
+}
+
+export default App;
+```
+- A aplicação foi estruturada para incluir rotas no backend, consumidas pelo frontend usando o cliente HTTP **Axios.**
+---
+# 2. Teoria de React com Hooks
+- O projeto usa React Hooks como useState e useEffect para gerenciar estado e ciclo de vida.
+**Exemplos no projeto:**
+
+1. **Gerenciamento de estado com useState:**
+
+- No componente TaskList, useState é usado para gerenciar o estado das tarefas e da nova tarefa.
+
+```
+const [tasks, setTasks] = useState([]);
+const [newTask, setNewTask] = useState('');
+```
+2. # Efeitos colaterais com useEffect:
+
+- O useEffect é usado para carregar as tarefas do backend quando o componente é montado.
+  
+```
+useEffect(() => {
+  const fetchTasks = async () => {
+    try {
+      const response = await api.get('/tasks');
+      setTasks(response.data);
+    } catch (error) {
+      console.error('Erro ao carregar tarefas:', error);
+    }
+  };
+  fetchTasks();
+}, []);
+```
+**Teoria abordada:**
+
+- O projeto exemplifica como os hooks substituem as antigas classes no React, tornando o código mais simples e funcional.
+---
+3. # Node.js com Express
+- O backend foi desenvolvido usando Node.js e o framework Express para criar uma API RESTful.
+- Inclui rotas para CRUD (Create, Read, Update, Delete) que interagem com o MongoDB.
+**Exemplos no projeto:**
+
+- A API no arquivo taskRoutes.js:
+
+```
+router.post('/', async (req, res) => {
+  const { title } = req.body;
+  const newTask = await Task.create({ title });
+  res.status(201).json(newTask);
+});
+
+router.get('/', async (req, res) => {
+  const tasks = await Task.find();
+  res.status(200).json(tasks);
+});
+```
+- Configuração do servidor no server.js:
+
+```
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const taskRoutes = require('./routes/taskRoutes');
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+app.use('/tasks', taskRoutes);
+
+app.listen(5000, () => console.log('Servidor rodando na porta 5000'));
+
+```
+---
+4. #  MongoDB
+- O banco de dados MongoDB foi utilizado para armazenar as tarefas. O projeto inclui o uso do Mongoose para modelagem e interação com o banco.
+**Exemplos no projeto:**
+
+- O arquivo task.js define o modelo de dados:
+
+```
+const mongoose = require('mongoose');
+
+const TaskSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  completed: { type: Boolean, default: false },
+});
+
+module.exports = mongoose.model('Task', TaskSchema);
+
+```
+- As operações com o banco (inserção, leitura, atualização e exclusão) são implementadas usando métodos do Mongoose.
+---
+# Resumo
+
+![Screenshot_171](https://github.com/user-attachments/assets/bcf7a6f8-8696-4ccc-9568-cae5b8346af4)
+
+Este projeto é um exemplo completo de integração entre frontend (React) e backend (Node.js com Express e MongoDB).
 
 
+
+  
