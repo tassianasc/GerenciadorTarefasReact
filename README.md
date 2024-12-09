@@ -124,11 +124,10 @@ frontend/
 # Base URL
 http://localhost:5000/tasks
 # Rotas
-Método	Endpoint	Descrição
-GET	/	Retorna todas as tarefas
-POST	/	Cria uma nova tarefa
-PUT	/:id	Atualiza o status de uma tarefa
-DELETE	/:id	Deleta uma tarefa
+- GET	/	Retorna todas as tarefas
+- POST	/	Cria uma nova tarefa
+- PUT	/:id	Atualiza o status de uma tarefa
+- DELETE	/:id	Deleta uma tarefa
 # Exemplo de Corpo para POST/PUT:
 ```
 {
