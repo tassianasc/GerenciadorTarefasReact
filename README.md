@@ -347,8 +347,9 @@ return (
 3. Chama as rotas do backend (Controller) via Axios.
 ---
 **Resumo do Padrão MVC no Projeto**
+---
 ![Screenshot_172](https://github.com/user-attachments/assets/b9ad86cd-f3cc-4024-bc94-04f359da2483)
-
+---
 Essa implementação separa claramente as responsabilidades, permitindo que o código seja mais organizado, fácil de entender e de manter.
 
 
